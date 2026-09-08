@@ -1,0 +1,37 @@
+{
+  "name": "warehouse-inventory-management-system",
+  "version": "1.0.0",
+  "description": "Comprehensive Warehouse & Inventory Management System REST API built with Node.js, Express, and MongoDB",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "keywords": [
+    "warehouse",
+    "inventory",
+    "management",
+    "express",
+    "mongodb",
+    "mongoose",
+    "jwt",
+    "rbac",
+    "api"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "helmet": "^7.1.0",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.4.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.2"
+  }
+}

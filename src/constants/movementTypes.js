@@ -1,0 +1,9 @@
+const MOVEMENT_TYPES = Object.freeze({
+  IN: 'IN',
+  OUT: 'OUT',
+  TRANSFER_IN: 'TRANSFER_IN',
+  TRANSFER_OUT: 'TRANSFER_OUT',
+  ADJUSTMENT: 'ADJUSTMENT',
+});
+
+module.exports = MOVEMENT_TYPES;
