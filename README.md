@@ -280,6 +280,7 @@ All API endpoints are prefixed with `/api/v1`.
 |---|---|---|---|---|
 | `POST` | `/items` | Yes | Admin, Manager | Create a new SKU / Item |
 | `GET` | `/items` | Yes | All Roles | List items (supports `?category=` & `?search=`) |
+| `GET` | `/items/low-stock` | Yes | All Roles | List items at or below their reorder point (alias of `/stock/low-stock`) |
 | `GET` | `/items/:id` | Yes | All Roles | Get item details |
 | `PUT` | `/items/:id` | Yes | Admin, Manager | Update item master details |
 | `DELETE` | `/items/:id` | Yes | Admin | Soft delete an item |
@@ -324,6 +325,32 @@ All API endpoints are prefixed with `/api/v1`.
 | `PATCH` | `/users/:id/status` | Yes | Admin | Activate or deactivate user account |
 
 ---
+
+
+## ⚠️ Error Response Format
+
+All errors return a consistent JSON envelope from the centralized error-handling middleware:
+
+| Field | Type | Description |
+|---|---|---|
+| `success` | boolean | Always `false` for errors |
+| `statusCode` | number | HTTP status code |
+| `errorCode` | string | Machine-readable code — `VALIDATION_ERROR` (400), `UNAUTHENTICATED` (401), `FORBIDDEN` (403), `NOT_FOUND` (404), `CONFLICT` (409), `INTERNAL_ERROR` (anything else) |
+| `message` | string | Human-readable explanation |
+| `errors` | array | Field-level validation details; empty when not applicable |
+| `stack` | string | Included only when `NODE_ENV=development` |
+
+Example (`400 Bad Request`):
+
+```json
+{
+  "success": false,
+  "statusCode": 400,
+  "errorCode": "VALIDATION_ERROR",
+  "message": "\"quantity\" must be a positive number",
+  "errors": []
+}
+```
 
 ## 🔒 Role Permissions Summary Matrix
 

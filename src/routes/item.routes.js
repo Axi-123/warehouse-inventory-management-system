@@ -20,6 +20,16 @@ router
   .post(authorize(ROLES.ADMIN, ROLES.WAREHOUSE_MANAGER), validate(createItemSchema), createItem)
   .get(authorize(ROLES.ADMIN, ROLES.WAREHOUSE_MANAGER, ROLES.WAREHOUSE_STAFF), getAllItems);
 
+
+const { getLowStockAlerts } = require('../controllers/stock.controller');
+
+router.get(
+  '/low-stock',
+  authorize(ROLES.ADMIN, ROLES.WAREHOUSE_MANAGER, ROLES.WAREHOUSE_STAFF),
+  getLowStockAlerts
+);
+
+
 router
   .route('/:id')
   .get(authorize(ROLES.ADMIN, ROLES.WAREHOUSE_MANAGER, ROLES.WAREHOUSE_STAFF), getItemById)
