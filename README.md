@@ -262,6 +262,19 @@ It creates isolated test fixtures, assigns Manager and Staff roles through the A
 - `reviewedBy` (ObjectId ref `User`)
 - `rejectionReason` (String)
 
+### Entity Relationship Diagram
+
+```mermaid
+erDiagram
+    USERS ||--o{ WAREHOUSES : "assignedWarehouse"
+    USERS ||--o{ STOCK_MOVEMENTS : "performedBy"
+    USERS ||--o{ TRANSFER_REQUESTS : "requestedBy / reviewedBy"
+    WAREHOUSES ||--o{ STOCK_BALANCES : "has"
+    ITEMS ||--o{ STOCK_BALANCES : "tracked in"
+    WAREHOUSES ||--o{ STOCK_MOVEMENTS : "logged at"
+    ITEMS ||--o{ STOCK_MOVEMENTS : "moved"
+    WAREHOUSES ||--o{ TRANSFER_REQUESTS : "from / to"
+    ITEMS ||--o{ TRANSFER_REQUESTS : "transferred"
 ---
 
 ## 📡 API Endpoint Reference
