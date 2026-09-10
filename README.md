@@ -275,9 +275,9 @@ erDiagram
     ITEMS ||--o{ STOCK_MOVEMENTS : "moved"
     WAREHOUSES ||--o{ TRANSFER_REQUESTS : "from / to"
     ITEMS ||--o{ TRANSFER_REQUESTS : "transferred"
----
+```
 
-## 📡 API Endpoint Reference
+## 📝 API Endpoint Reference
 
 All API endpoints are prefixed with `/api/v1`.
 
