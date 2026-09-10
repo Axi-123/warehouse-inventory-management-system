@@ -276,7 +276,16 @@ erDiagram
     WAREHOUSES ||--o{ TRANSFER_REQUESTS : "from / to"
     ITEMS ||--o{ TRANSFER_REQUESTS : "transferred"
 ```
+### Reference vs. Embedding
 
+The relationships in the MongoDB schema are modelled using ObjectId references. Items, warehouses and users are large, shared entities that are accessed independently of stock movements and balances. Therefore, referencing is more appropriate than embedding. None of these relationships are always-read-with-the-parent relationships that would strongly justify embedding.
+
+### Known Limitations
+
+- No frontend is currently implemented.
+- The first Admin user must be seeded.
+- Third-party notifications are currently stubbed.
+  
 ## 📝 API Endpoint Reference
 
 All API endpoints are prefixed with `/api/v1`.
