@@ -1,5 +1,14 @@
 # Warehouse & Inventory Management System (Backend REST API)
 
+## 👥 Team Details
+
+| Name | Roll No. | Department | Section |
+|---|---|---|---|
+| Axilia | 2462320. | ADSE | 5BTCSDS |
+| Ciena | 2462322 | ADSE | 5BTCSDS |
+| Ayan | 2462321 | ADSE | 5BTCSDS |
+| Darren | 2462323 | ADSE | 5BTCSDS |
+
 A production-grade, enterprise-ready RESTful backend API for managing multi-warehouse inventory, stock movement auditing, automated running balances, inter-warehouse transfers, low-stock threshold alerting, and analytical stock valuation reporting. Built with Node.js, Express.js, MongoDB, and Mongoose following strict MVC architecture and Role-Based Access Control (RBAC).
 
 ---
