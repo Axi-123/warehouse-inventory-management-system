@@ -1,5 +1,14 @@
 # Warehouse & Inventory Management System (Backend REST API)
 
+## 👥 Team Details
+
+| Name | Roll No. | Department | Section |
+|---|---|---|---|
+| Axilia | 2462320. | ADSE | 5BTCSDS |
+| Ciena | 2462322 | ADSE | 5BTCSDS |
+| Ayan | 2462321 | ADSE | 5BTCSDS |
+| Darren | 2462323 | ADSE | 5BTCSDS |
+
 A production-grade, enterprise-ready RESTful backend API for managing multi-warehouse inventory, stock movement auditing, automated running balances, inter-warehouse transfers, low-stock threshold alerting, and analytical stock valuation reporting. Built with Node.js, Express.js, MongoDB, and Mongoose following strict MVC architecture and Role-Based Access Control (RBAC).
 
 ---
@@ -253,9 +262,31 @@ It creates isolated test fixtures, assigns Manager and Staff roles through the A
 - `reviewedBy` (ObjectId ref `User`)
 - `rejectionReason` (String)
 
----
+### Entity Relationship Diagram
 
-## 📡 API Endpoint Reference
+```mermaid
+erDiagram
+    USERS ||--o{ WAREHOUSES : "assignedWarehouse"
+    USERS ||--o{ STOCK_MOVEMENTS : "performedBy"
+    USERS ||--o{ TRANSFER_REQUESTS : "requestedBy / reviewedBy"
+    WAREHOUSES ||--o{ STOCK_BALANCES : "has"
+    ITEMS ||--o{ STOCK_BALANCES : "tracked in"
+    WAREHOUSES ||--o{ STOCK_MOVEMENTS : "logged at"
+    ITEMS ||--o{ STOCK_MOVEMENTS : "moved"
+    WAREHOUSES ||--o{ TRANSFER_REQUESTS : "from / to"
+    ITEMS ||--o{ TRANSFER_REQUESTS : "transferred"
+```
+### Reference vs. Embedding
+
+The relationships in the MongoDB schema are modelled using ObjectId references. Items, warehouses and users are large, shared entities that are accessed independently of stock movements and balances. Therefore, referencing is more appropriate than embedding. None of these relationships are always-read-with-the-parent relationships that would strongly justify embedding.
+
+### Known Limitations
+
+- No frontend is currently implemented.
+- The first Admin user must be seeded.
+- Third-party notifications are currently stubbed.
+  
+## 📝 API Endpoint Reference
 
 All API endpoints are prefixed with `/api/v1`.
 
